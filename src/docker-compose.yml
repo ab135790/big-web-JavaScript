@@ -1,0 +1,11 @@
+version: "3"
+services:
+  redis-test:
+    image: "redis"
+    restart: always
+    container_name: "redis-test"
+    ports:
+      - 10024:6379
+    volumes:
+      - /home/redistest:/data #redis数据做一个持久化
+    command: ["redis-server", "--requirepass", "123456"] #传递一个redis-server，设置一个默认密码.
