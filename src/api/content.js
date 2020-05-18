@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:28
+ * @LastEditTime: 2020-05-17 16:34:53
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\api\content.js
+ */
 import axios from '@/utils/request'
 import qs from 'qs'
 

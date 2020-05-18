@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:28
+ * @LastEditTime: 2020-05-18 22:06:17
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\App.vue
+-->
 <template>
   <div id="app">
     <imooc-header></imooc-header>
@@ -18,9 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "assets/layui/css/layui.css";
 @import "assets/css/global.css";
-@import "assets/layui/css/modules/layer/default/layer.css";
 
 // 公用样式
 .svg {

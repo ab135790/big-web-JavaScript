@@ -197,6 +197,9 @@ export default {
             requestAnimationFrame(() => {
               this.$refs.observer.reset()
             })
+            this.$store.commit('setUserInfo', res.user)
+            this.$store.commit('setIsLogin', true)
+            this.$router.push({ name: 'index' })
             // console.log('登录成功', res)
           } else if (res.code === 401) {
             this.$refs.codeField.setErrors([res.msg])
