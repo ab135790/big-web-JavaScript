@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-18 22:14:14
- * @LastEditTime: 2020-05-18 22:16:08
+ * @LastEditTime: 2020-05-19 22:45:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\user\Center.vue
 -->
 <!--  -->
 <template>
-  <div class=''>user-others</div>
+  <div class="flex fly-panel fly-panel-user" pad20>正在开发中...</div>
 </template>
 
 <script>
@@ -27,6 +27,12 @@ export default {
 </script>
 <style lang='scss' scoped>
 // @import url(); 引入公共css类
-
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
 </style>
-

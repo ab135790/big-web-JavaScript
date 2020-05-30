@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-18 21:38:16
- * @LastEditTime: 2020-05-18 22:38:13
+ * @LastEditTime: 2020-05-19 22:23:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\views\Center.vue
@@ -15,7 +15,7 @@
       v-for="(menu, index) of lists"
       :key="'menu' + index"
       >
-      <router-link :to="{name: menu.link}">
+      <router-link :to="{name: menu.link}" :active-class="menu.activeClass">
         <i class="layui-icon" :class="menu.icon"></i> {{menu.name}}
       </router-link>
       </li>
@@ -47,12 +47,14 @@ export default {
         {
           name: '基本设置',
           icon: 'layui-icon-set',
-          link: 'user-settings'
+          link: 'myinfo',
+          activeClass: 'layui-this'
         },
         {
           name: '我的帖子',
           icon: 'layui-icon-form',
-          link: 'user-posts'
+          link: 'myPost',
+          activeClass: 'layui-this'
         },
         {
           name: '我的消息',

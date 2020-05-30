@@ -1,0 +1,81 @@
+$spacer: 10;
+$spacers2: () !default;
+$utils2: () !default;
+$spacers: map-merge($map1:(
+  0: 0,
+  1: 1 * $spacer,
+  2: 2 * $spacer,
+  3: 3 * $spacer,
+  4: 4 * $spacer,
+  5: 5 * $spacer,
+  6: 6 * $spacer,
+  7: 7 * $spacer,
+  8: 8 * $spacer,
+  9: 9 * $spacer,
+  10: 10 * $spacer
+), $map2: $spacers2);
+
+$utils: map-merge($map1: (
+  ml: (
+    property: margin-left,
+    values: $spacers
+  ),
+  mr: (
+    property: margin-right,
+    values: $spacers
+  ),
+  mt: (
+    property: margin-top,
+    values: $spacers
+  ),
+  mb: (
+    property: margin-bottom,
+    values: $spacers
+  ),
+  mlr: (
+    property: margin-left margin-right,
+    values: $spacers
+  ),
+  mtb: (
+    property: margin-top margin-bottom,
+    values: $spacers
+  ),
+  pl: (
+    property: padding-left,
+    values: $spacers
+  ),
+  pr: (
+    property: padding-right,
+    values: $spacers
+  ),
+  pt: (
+    property: padding-top,
+    values: $spacers
+  ),
+  pb: (
+    property: padding-bottom,
+    values: $spacers
+  ),
+  plr: (
+    property: padding-left padding-right,
+    values: $spacers
+  ),
+  ptb: (
+    property: padding-top padding-bottom,
+    values: $spacers
+  )
+), $map2: $utils2);
+
+@each $key, $value in $utils {
+  // 获取这里的$values: (0:1,1:8px,2:16px,...) 这里四个$key的values, 得到四个$value;
+  $values: map-get($map: $value, $key: values);
+  // 遍历 这里的$values: (0:1,1:8px,2:16px,...)
+  @each $item-key, $item-value in $values {
+    $properties: map-get($map: $value, $key: property);
+    .#{$key}#{$item-value} {
+      @each $property in $properties {
+        #{$property}: $item-value + px !important;
+      }
+    }
+  }
+}

@@ -1,13 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-18 22:35:48
+ * @LastEditTime: 2020-05-26 22:29:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
  */
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
+import jwt from 'jsonwebtoken'
+import moment from 'dayjs'
 // import Home from '@/views/Home.vue'
 const Login = () => import(/* webpackChunkName: 'login' */ './views/Login.vue')
 const Reg = () => import(/* webpackChunkName: 'reg' */ './views/Reg.vue')
@@ -16,20 +19,26 @@ const Home = () => import(/* webpackChunkName: 'Home' */ './views/Home.vue')
 const Index = () => import(/* webpackChunkName: 'Index' */ './views/channels/Index.vue')
 const Template1 = () => import(/* webpackChunkName: 'Template1' */ './views/channels/Template1.vue')
 const Center = () => import(/* webpackChunkName: 'cener' */ './views/Center.vue')
-const userCenter = () => import(/* webpackChunkName: 'Center' */ '@/components/user/Center.vue')
-const userOthers = () => import(/* webpackChunkName: 'Others' */ '@/components/user/Others.vue')
-const userPosts = () => import(/* webpackChunkName: 'Posts' */ '@/components/user/Posts.vue')
-const userSettings = () => import(/* webpackChunkName: 'Settings' */ '@/components/user/Settings.vue')
+const userCenter = () => import(/* webpackChunkName: 'userCenter' */ '@/components/user/Center.vue')
+const userOthers = () => import(/* webpackChunkName: 'userOthers' */ '@/components/user/Others.vue')
+const userPosts = () => import(/* webpackChunkName: 'userPosts' */ '@/components/user/Posts.vue')
+const userSettings = () => import(/* webpackChunkName: 'userSettings' */ '@/components/user/Settings.vue')
 const userMsg = () => import(/* webpackChunkName: 'Msg' */ '@/components/user/Msg.vue')
 const User = () => import(/* webpackChunkName: 'User' */ './views/User.vue')
+const Accounts = () => import(/* webpackChunkName: 'Accounts' */ '@/components/user/common/Accounts.vue')
+const Myinfo = () => import(/* webpackChunkName: 'Myinfo' */ '@/components/user/common/Myinfo.vue')
+const Password = () => import(/* webpackChunkName: 'Password' */ '@/components/user/common/Password.vue')
+const PicUpload = () => import(/* webpackChunkName: 'PicUpload' */ '@/components/user/common/PicUpload.vue')
+const MyPost = () => import(/* webpackChunkName: 'MyPost' */ '@/components/user/common/MyPost.vue')
+const MyCollection = () => import(/* webpackChunkName: 'MyCollection' */ '@/components/user/common/MyCollection.vue')
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   linkExactActiveClass: 'layui-this',
   routes: [
     {
       path: '/',
-      name: 'home',
+      // name: 'home',
       component: Home,
       children: [
         {
@@ -78,6 +87,7 @@ export default new Router({
     {
       path: '/center',
       name: 'center',
+      meta: { requiresAuth: true },
       linkActiveClass: 'layui-this',
       component: Center,
       children: [
@@ -88,8 +98,30 @@ export default new Router({
         },
         {
           path: 'settings',
-          name: 'user-settings',
-          component: userSettings
+          // name: 'user-settings',
+          component: userSettings,
+          children: [
+            {
+              path: 'Accounts',
+              name: 'accounts',
+              component: Accounts
+            },
+            {
+              path: '',
+              name: 'myinfo',
+              component: Myinfo
+            },
+            {
+              path: 'Password',
+              name: 'password',
+              component: Password
+            },
+            {
+              path: 'PicUpload',
+              name: 'picUpload',
+              component: PicUpload
+            }
+          ]
         },
         {
           path: 'others',
@@ -103,10 +135,56 @@ export default new Router({
         },
         {
           path: 'posts',
-          name: 'user-posts',
-          component: userPosts
+          // name: 'user-posts',
+          component: userPosts,
+          children: [
+            {
+              path: '',
+              name: 'myPost',
+              component: MyPost
+            },
+            {
+              path: 'MyCollection',
+              name: 'myCollection',
+              component: MyCollection
+            }
+          ]
         }
       ]
     }
   ]
 })
+// 注册全局前置守卫
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  if (token !== '' && token !== null) {
+    const payload = jwt.decode(token) // 解码jwt数据
+    // 如果当前时间是在过期时间之前的，说明没有过期
+    if (moment().isBefore(moment(payload.exp * 1000))) {
+      // localStorage里面的缓存用户信息 + token信息
+      // 大公司8-24小时，refresh token 1个月
+      store.commit('setToken', token)
+      store.commit('setUserInfo', userInfo)
+      store.commit('setIsLogin', true)
+    } else {
+      localStorage.clear()
+    }
+  }
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const isLogin = store.state.isLogin
+    if (isLogin) {
+      // 已经登录的状态
+      // 权限判断， meta元数据
+      next()
+    } else {
+      // 未登录的状态
+      next('/login')
+    }
+  } else {
+    // 公共页面，不需要登录
+    next()
+  }
+})
+
+export default router

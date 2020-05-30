@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-17 20:57:56
+ * @LastEditTime: 2020-05-30 21:02:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\Header.vue
@@ -84,40 +84,27 @@
                 v-show="userInfo.isVip !== 0"
                 >VIP{{ userInfo.isVip }}</i
               >
-              <img
-                :src="
-                  userInfo.pic ||
-                    'https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg'
-                "
-              />
+              <img :src=" userInfo.pic || 'https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg' "/>
             </a>
-            <dl
-              class="layui-nav-child layui-anim layui-anim-upbit"
-              :class="{ 'layui-show': isHover }"
-            >
+            <dl class="layui-nav-child layui-anim layui-anim-upbit" :class="{ 'layui-show': isHover }">
               <dd>
-                <a href="user/set.html"
-                  ><i class="layui-icon">&#xe620;</i>基本设置</a
-                >
+                <router-link :to="{name: 'myinfo'}">
+                  <i class="layui-icon">&#xe620;</i>基本设置
+                </router-link>
               </dd>
               <dd>
-                <a href="user/message.html"
-                  ><i class="iconfont icon-tongzhi" style="top: 4px;"></i
-                  >我的消息</a
-                >
+                <router-link :to="{name: 'user-msg'}">
+                  <i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息
+                </router-link>
               </dd>
               <dd>
-                <a href="user/home.html"
-                  ><i
-                    class="layui-icon"
-                    style="margin-left: 2px; font-size: 22px;"
-                    >&#xe68e;</i
-                  >我的主页</a
-                >
+                <router-link to="/">
+                  <i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页
+                </router-link>
               </dd>
               <hr style="margin: 5px 0;" />
               <dd>
-                <a @click.prevent="quit()" style="text-align: center;">退出</a>
+                <a href="javascript: void(0)" @click.prevent="logout()" style="text-align: center;">退出</a>
               </dd>
             </dl>
           </li>
@@ -150,10 +137,14 @@ export default {
     }
   },
   methods: {
-    quit () {
-      this.$store.commit('setUserInfo', {})
-      this.$store.commit('setIsLogin', false)
-      this.$router.push('/login')
+    logout () {
+      this.$confirm('确定退出嘛', () => {
+        localStorage.clear()
+        this.$store.commit('setUserInfo', {})
+        this.$store.commit('setToken', '')
+        this.$store.commit('setIsLogin', false)
+        this.$router.push({ name: 'index' }, () => {})
+      }, () => {})
     },
     /**
      * @description: 当用户的鼠标移入头像的时候，去显示操作菜单

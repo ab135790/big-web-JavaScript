@@ -194,27 +194,24 @@ export default {
         .then(res => {
           if (res.code === 200) {
             this.username = this.password = this.code = ''
-            requestAnimationFrame(() => {
-              this.$refs.observer.reset()
-            })
             this.$store.commit('setUserInfo', res.user)
             this.$store.commit('setIsLogin', true)
+            this.$store.commit('setToken', res.token)
+            requestAnimationFrame(() => {
+              this.$refs.observer && this.$refs.observer.reset()
+            })
             this.$router.push({ name: 'index' })
             // console.log('登录成功', res)
           } else if (res.code === 401) {
             this.$refs.codeField.setErrors([res.msg])
             this._getCode()
           }
-          // else {
-          //   this.$alert(res.msg)
-          // }
         })
         .catch(err => {
           const data = err.response.data
           if (data.code === 500) {
             this.$alert('服务器错误!')
           }
-          // console.log(err.response)
         })
     }
   }

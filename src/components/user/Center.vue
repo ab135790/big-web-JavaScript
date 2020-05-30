@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-18 22:14:14
- * @LastEditTime: 2020-05-18 23:01:45
+ * @LastEditTime: 2020-05-19 21:29:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\user\Center.vue
@@ -34,9 +34,72 @@
                   <span>修改密码</span>
                 </a>
               </li>
-              <li class="layui-col-sm3 layui-col-xs4">2</li>
-              <li class="layui-col-sm3 layui-col-xs4">3</li>
-              <li class="layui-col-sm3 layui-col-xs4">4</li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改密码</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

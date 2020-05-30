@@ -1,8 +1,19 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:29
+ * @LastEditTime: 2020-05-30 21:37:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\utils\axios.js
+ */
 // 封装axios的请求， 返回重新封装的数据格式
 // 对错误的统一处理
 import axios from 'axios'
 import errorHandle from './errorHandle.js'
+import store from '@/store'
+
 const CancelToken = axios.CancelToken
+
 class HttpRequest {
   constructor (baseUrl) {
     this.baseUrl = baseUrl
@@ -13,6 +24,7 @@ class HttpRequest {
     const config = {
       baseUrl: this.baseUrl,
       headers: {
+        Authorization: 'Bearer ' + store.state.token,
         'Content-Type': 'application/json;charset=utf-8'
       },
       timeout: 10000
