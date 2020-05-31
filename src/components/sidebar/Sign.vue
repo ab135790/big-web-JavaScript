@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-31 21:25:22
+ * @LastEditTime: 2020-05-31 21:30:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\sidebar\Sign.vue
@@ -171,8 +171,7 @@ export default {
       // 获取小时
       let leftHours = Math.floor(leftTime / 3600)
       // 获取分钟
-      let leftMinutes = (leftTime / 3600)
-      leftMinutes = Math.floor(('0.' + leftMinutes.toString().split('.')[1]) * 60)
+      let leftMinutes = Math.floor(((leftTime / 3600) - leftHours) * 60)
       // 减去剩余秒数后的总秒数
       let leftSeconds = leftTime - leftHours * 60 * 60
       // 减去小时后的总秒数再减去获取的分钟秒数，获得剩余秒数
