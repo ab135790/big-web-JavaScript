@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-26 22:29:36
+ * @LastEditTime: 2020-05-31 02:28:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
@@ -31,6 +31,8 @@ const Password = () => import(/* webpackChunkName: 'Password' */ '@/components/u
 const PicUpload = () => import(/* webpackChunkName: 'PicUpload' */ '@/components/user/common/PicUpload.vue')
 const MyPost = () => import(/* webpackChunkName: 'MyPost' */ '@/components/user/common/MyPost.vue')
 const MyCollection = () => import(/* webpackChunkName: 'MyCollection' */ '@/components/user/common/MyCollection.vue')
+const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NoFound.vue')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -151,6 +153,14 @@ const router = new Router({
           ]
         }
       ]
+    },
+    {
+      path: '/404',
+      component: NoFound
+    },
+    {
+      path: '*',
+      redirect: '/404'
     }
   ]
 })

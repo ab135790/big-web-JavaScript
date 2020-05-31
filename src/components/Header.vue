@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-30 21:02:30
+ * @LastEditTime: 2020-05-31 02:30:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\Header.vue
@@ -32,10 +32,10 @@
         <!-- 未登入的状态 -->
         <template v-if="!isLogin">
           <li class="layui-nav-item">
-            <a
+            <router-link
               class="iconfont icon-touxiang layui-hide-xs"
-              href="../user/login.html"
-            ></a>
+              to="/user12312"
+            ></router-link>
           </li>
           <li class="layui-nav-item">
             <!--          <a href="../user/login.html">登入</a>-->
