@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-31 21:21:46
+ * @LastEditTime: 2020-05-31 21:25:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\sidebar\Sign.vue
@@ -177,14 +177,10 @@ export default {
       let leftSeconds = leftTime - leftHours * 60 * 60
       // 减去小时后的总秒数再减去获取的分钟秒数，获得剩余秒数
       leftSeconds = leftSeconds - leftMinutes * 60
-      console.log('leftSeconds', leftSeconds)
       // 优化 10s 以下的显示样式
-      if (parseInt(leftSeconds) < 10) {
-        leftSeconds = `0${leftSeconds}`
-      }
       this.leftHours = leftHours < 10 ? `0${leftHours}` : leftHours
-      this.leftMinutes = leftMinutes
-      this.leftSeconds = leftSeconds
+      this.leftMinutes = leftMinutes < 10 ? `0${leftMinutes}` : leftMinutes
+      this.leftSeconds = leftSeconds < 10 ? `0${leftSeconds}` : leftSeconds
       setTimeout(this.countDowm, 1000)
     }
   },
