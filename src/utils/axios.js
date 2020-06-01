@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-30 21:37:43
+ * @LastEditTime: 2020-05-31 22:28:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\axios.js
@@ -11,6 +11,7 @@
 import axios from 'axios'
 import errorHandle from './errorHandle.js'
 import store from '@/store'
+import PublicConfig from '@/config'
 
 const CancelToken = axios.CancelToken
 
@@ -24,7 +25,6 @@ class HttpRequest {
     const config = {
       baseUrl: this.baseUrl,
       headers: {
-        Authorization: 'Bearer ' + store.state.token,
         'Content-Type': 'application/json;charset=utf-8'
       },
       timeout: 10000
@@ -45,6 +45,16 @@ class HttpRequest {
   interceptors (instance) {
     // 发起请求的拦截器
     instance.interceptors.request.use(config => {
+      let isPublic = false
+      // 判断是否是私有路径!
+      PublicConfig.publicPath.map(path => {
+        isPublic = isPublic || path.test(config.url)
+      })
+      const token = store.state.token
+      // 如果是私有路径请求头部header就加token
+      if (!isPublic && token) {
+        config.headers.Authorization = 'Bearer ' + token
+      }
       // Do something before request is sent
       let key = config.url + '&' + config.method
       this.removePending(key, true)

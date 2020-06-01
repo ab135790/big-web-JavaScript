@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-31 02:28:19
+ * @LastEditTime: 2020-06-01 22:21:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
@@ -32,6 +32,8 @@ const PicUpload = () => import(/* webpackChunkName: 'PicUpload' */ '@/components
 const MyPost = () => import(/* webpackChunkName: 'MyPost' */ '@/components/user/common/MyPost.vue')
 const MyCollection = () => import(/* webpackChunkName: 'MyCollection' */ '@/components/user/common/MyCollection.vue')
 const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NoFound.vue')
+const Confirm = () => import(/* webpackChunkName: 'Confirm' */ '@/views/Confirm.vue')
+const Reset = () => import(/* webpackChunkName: 'Reset' */ '@/views/Reset.vue')
 
 Vue.use(Router)
 
@@ -59,6 +61,16 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/confirm',
+      name: 'confirm',
+      component: Confirm
+    },
+    {
+      path: '/reset',
+      name: 'reset',
+      component: Reset
     },
     {
       path: '/reg',
