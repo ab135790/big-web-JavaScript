@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-30 21:29:58
+ * @LastEditTime: 2020-06-06 22:06:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\main.js
@@ -37,7 +37,6 @@ Vue.use(Pop)
 // validator.localize('zh-CN')
 
 Vue.config.productionTip = false
-
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV !== 'production'
 //     ? 'http://localhost:3000'

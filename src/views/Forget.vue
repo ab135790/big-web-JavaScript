@@ -134,33 +134,17 @@
 </template>
 
 <script>
-import { getCode, forget } from '@/api/login'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { forget } from '@/api/login'
+import codeMix from '@/mixin/code'
 export default {
   name: 'forget',
+  mixins: [codeMix],
   data () {
     return {
-      username: '',
-      code: '',
-      svg: ''
+      username: ''
     }
   },
-  components: {
-    ValidationProvider,
-    ValidationObserver
-  },
-  mounted () {
-    this._getCode()
-  },
   methods: {
-    _getCode () {
-      getCode().then(res => {
-        // console.log(res)
-        if (res.code === 200) {
-          this.svg = res.data
-        }
-      })
-    },
     /** 2020-2-15 0015
      *作者:青型科技
      *功能: 提交用户信息
@@ -174,11 +158,13 @@ export default {
       }
       forget({
         username: this.username,
-        code: this.code
+        code: this.code,
+        sid: this.$store.state.sid
       }).then(res => {
-        // console.log(res)
         if (res.code === 200) {
-          alert('邮件发送成功')
+          this.$alert(res.msg)
+        } else {
+          this.$alert(res.msg)
         }
       })
     }

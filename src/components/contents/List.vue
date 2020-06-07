@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mixin } from '@/utils/mixin'
+import { mixin } from '@/mixin/_mixin'
 import ListItem from './ListItem'
 export default {
   mixins: [mixin],

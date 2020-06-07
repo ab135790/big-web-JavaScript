@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-07 19:51:08
+ * @LastEditTime: 2020-06-07 20:29:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\components\modules\editor\Face.vue
+-->
+<!--  -->
+<template>
+  <transition name="fade">
+      <div class="layui-layer layui-layer-tips layui-edit-face edit-content">
+      <div class="layui-layer-content" v-show="isShow">
+        <ul class="layui-clear">
+          <li v-for="(value, key) in lists" :key="key" @click="handleFaceClick(key)">
+            <!-- value: {{value}} - key: {{key}} -->
+            <img :src="value" alt="">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+// 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
+// 例如：import 《组件名称》 from '《组件路径》';
+import faces from '@/assets/js/face'
+export default {
+  name: 'face',
+  props: ['isShow', 'ctrl'],
+  data () {
+  // 这里存放数据
+    return {
+      lists: faces
+    }
+  },
+  methods: {
+    handleFaceClick (item) {
+      this.$emit('addEvent', item)
+    },
+    handleBodyClick (e) {
+      e.stopPropagation()
+      if (typeof this.ctrl === 'undefined') return
+      // 触发隐藏本组件的关闭事件
+      if (!this.ctrl.contains(e.target)) { // 判断点击了非自身模块
+        this.$emit('closeEvent')
+      }
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      document.querySelector('body').addEventListener('click', this.handleBodyClick)
+    })
+  },
+  beforeDestroy () {
+    document.querySelector('body').removeEventListener('click', this.handleBodyClick)
+  }
+}
+</script>
+<style lang='scss' scoped>
+// @import url(); 引入公共css类
+.edit-content {
+  position: absolute;
+  top: 45px;
+  left: 0;
+}
+</style>

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-31 21:30:05
+ * @LastEditTime: 2020-06-07 13:05:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\sidebar\Sign.vue
@@ -147,12 +147,12 @@ export default {
           this.countDowm()
         } else {
           //  用户已经签到
-          this.$pop('', '请已经签到')
+          this.$pop('', '已经签到')
         }
         user.isSign = true
         user.lastSign = res.lastSign
-        this.isSign = true
         this.$store.commit('setUserInfo', user)
+        this.isSign = true
       })
     },
     countDowm () {

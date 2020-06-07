@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-19 21:41:31
- * @LastEditTime: 2020-06-01 23:31:10
+ * @LastEditTime: 2020-06-02 21:15:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\user\common\Myinfo.vue
@@ -114,6 +114,7 @@ export default {
         gender: this.gender
       }).then(res => {
         if (res.code === 200) {
+          // 利用扩展运算符合并修改
           this.$store.commit('setUserInfo', {
             ...this.$store.state.userInfo,
             ...{

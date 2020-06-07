@@ -193,37 +193,20 @@
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import { getCode, reg } from '@/api/login'
+import codeMix from '@/mixin/code'
+import { reg } from '@/api/login'
 export default {
   name: 'reg',
+  mixins: [codeMix],
   data () {
     return {
       username: '',
       name: '',
       password: '',
-      repassword: '',
-      code: '',
-      svg: ''
+      repassword: ''
     }
   },
-  components: {
-    ValidationProvider,
-    ValidationObserver
-  },
-  mounted () {
-    this._getCode()
-  },
   methods: {
-    _getCode () {
-      let sid = this.$store.state.sid
-      // console.log('sid', sid)
-      getCode(sid).then(res => {
-        if (res.code === 200) {
-          this.svg = res.data
-        }
-      })
-    },
     /** 2020-2-15 0015
      *作者:青型科技
      *功能: 用户注册

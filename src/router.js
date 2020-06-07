@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-01 22:21:59
+ * @LastEditTime: 2020-06-07 14:05:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
@@ -34,7 +34,7 @@ const MyCollection = () => import(/* webpackChunkName: 'MyCollection' */ '@/comp
 const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NoFound.vue')
 const Confirm = () => import(/* webpackChunkName: 'Confirm' */ '@/views/Confirm.vue')
 const Reset = () => import(/* webpackChunkName: 'Reset' */ '@/views/Reset.vue')
-
+const Add = () => import(/* webpackChunkName: 'Add' */ '@/components/contents/Add.vue')
 Vue.use(Router)
 
 const router = new Router({
@@ -90,7 +90,22 @@ const router = new Router({
     {
       path: '/forget',
       name: 'forget',
-      component: Forget
+      component: Forget,
+      beforeEnter: (to, from, next) => {
+        // console.log('TCL: next', next);
+        // console.log('TCL: to', to);
+        // console.log('TCL: from', from);
+        if (from.name === 'login') {
+          next()
+        } else {
+          next('/login')
+        }
+      }
+    },
+    {
+      path: '/add',
+      name: 'add',
+      component: Add
     },
     {
       path: '/user:uid',

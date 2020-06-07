@@ -16,7 +16,6 @@
           <validationObserver ref='observer' v-slot='{ validate }'>
             <div class='layui-tab-item layui-show'>
               <div class='layui-form layui-form-pane'>
-                <form method='post'>
                   <div class='layui-form-item'>
                     <label for='L_email' class='layui-form-label'>用户名</label>
                     <Validation-Provider
@@ -125,7 +124,6 @@
                       title='微博登入'
                     ></a>
                   </div>
-                </form>
               </div>
             </div>
           </validationObserver>
@@ -136,44 +134,18 @@
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import { getCode, login } from '@/api/login'
-import uuid from 'uuid/v4'
+import codeMix from '@/mixin/code'
+import { login } from '@/api/login'
 export default {
   name: 'login',
-  components: {
-    ValidationProvider,
-    ValidationObserver
-  },
+  mixins: [codeMix],
   data () {
     return {
       username: '',
-      password: '',
-      code: '',
-      svg: ''
+      password: ''
     }
-  },
-  mounted () {
-    let sid = ''
-    if (localStorage.getItem('sid')) {
-      sid = localStorage.getItem('sid')
-    } else {
-      sid = uuid()
-      localStorage.setItem('sid', sid)
-    }
-    this.$store.commit('setSid', sid)
-    this._getCode()
   },
   methods: {
-    _getCode () {
-      let sid = this.$store.state.sid
-      // console.log('sid', sid)
-      getCode(sid).then(res => {
-        if (res.code === 200) {
-          this.svg = res.data
-        }
-      })
-    },
     /** 2020-2-18 0018
      *作者:青型科技
      *功能: 点击提交表单执行登录
@@ -207,6 +179,8 @@ export default {
           } else if (res.code === 401) {
             this.$refs.codeField.setErrors([res.msg])
             this._getCode()
+          } else {
+            this.$alert(res.msg)
           }
         })
         .catch(err => {

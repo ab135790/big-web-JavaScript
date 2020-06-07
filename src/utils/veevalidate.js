@@ -1,13 +1,21 @@
-import { extend, localize } from 'vee-validate';
-import { required, email, length, confirmed, min } from 'vee-validate/dist/rules';
+/*
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:29
+ * @LastEditTime: 2020-06-07 13:25:15
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\utils\veevalidate.js
+ */ 
+import { extend, localize } from 'vee-validate'
+import { required, email, length, confirmed, min } from 'vee-validate/dist/rules'
 
-import zh from 'vee-validate/dist/locale/zh_CN.json';
+import zh from 'vee-validate/dist/locale/zh_CN.json'
 
-extend('email', email);
-extend('required', required);
-extend('length', length);
-extend('confirmed', confirmed);
-extend('min', min);
+extend('email', email)
+extend('required', required)
+extend('length', length)
+extend('confirmed', confirmed)
+extend('min', min)
 
 localize('zn_CN', {
   messages: {
@@ -32,4 +40,4 @@ localize('zn_CN', {
       required: '请输入{_field_}!!!'
     }
   }
-});
+})
