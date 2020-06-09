@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 19:51:08
- * @LastEditTime: 2020-06-07 20:29:40
+ * @LastEditTime: 2020-06-09 22:11:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\Face.vue
@@ -28,7 +28,7 @@
 import faces from '@/assets/js/face'
 export default {
   name: 'face',
-  props: ['isShow', 'ctrl'],
+  props: ['isShow'],
   data () {
   // 这里存放数据
     return {
@@ -38,31 +38,11 @@ export default {
   methods: {
     handleFaceClick (item) {
       this.$emit('addEvent', item)
-    },
-    handleBodyClick (e) {
-      e.stopPropagation()
-      if (typeof this.ctrl === 'undefined') return
-      // 触发隐藏本组件的关闭事件
-      if (!this.ctrl.contains(e.target)) { // 判断点击了非自身模块
-        this.$emit('closeEvent')
-      }
+      this.$emit('closeEvent')
     }
-  },
-  mounted () {
-    this.$nextTick(() => {
-      document.querySelector('body').addEventListener('click', this.handleBodyClick)
-    })
-  },
-  beforeDestroy () {
-    document.querySelector('body').removeEventListener('click', this.handleBodyClick)
   }
 }
 </script>
 <style lang='scss' scoped>
 // @import url(); 引入公共css类
-.edit-content {
-  position: absolute;
-  top: 45px;
-  left: 0;
-}
 </style>

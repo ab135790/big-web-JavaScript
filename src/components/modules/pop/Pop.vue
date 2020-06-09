@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-30 21:13:49
- * @LastEditTime: 2020-05-30 21:23:20
+ * @LastEditTime: 2020-06-09 23:01:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\alert\pop\Pop.vue
@@ -77,6 +77,7 @@ export default {
   position: fixed;
   left: 50%;
   top: 50%;
+  z-index: 9999;
 }
 .animation {
   animation-fill-mode: both;

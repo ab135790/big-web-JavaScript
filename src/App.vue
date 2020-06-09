@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:28
- * @LastEditTime: 2020-05-26 23:10:31
+ * @LastEditTime: 2020-06-08 22:04:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\App.vue
@@ -28,6 +28,7 @@ export default {
 <style lang="scss">
 @import "assets/css/global.css";
 @import "assets/scss/common.scss";
+@import "assets/css/layui-layer/layer.css";
 // 公用样式
 .svg {
   position: relative;

@@ -76,7 +76,7 @@ $btn-dark: darken($btn-main, 5%);
   top: calc(50% - 75px);
   padding: 20px 10px;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
-  z-index: 99;
+  z-index: 9999;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
