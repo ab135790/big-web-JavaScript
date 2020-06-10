@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 19:51:08
- * @LastEditTime: 2020-06-09 22:11:38
+ * @LastEditTime: 2020-06-10 20:56:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\Face.vue
@@ -14,7 +14,7 @@
         <ul class="layui-clear">
           <li v-for="(value, key) in lists" :key="key" @click="handleFaceClick(key)">
             <!-- value: {{value}} - key: {{key}} -->
-            <img :src="value" alt="">
+            <img :src="value" :alt="key">
           </li>
         </ul>
       </div>

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 14:41:50
- * @LastEditTime: 2020-06-09 23:41:07
+ * @LastEditTime: 2020-06-10 22:02:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\index.vue
@@ -33,21 +33,22 @@
           <i class="layui-icon layui-icon-fonts-code"></i>
         </span>
         <!-- hr -->
-        <span @click="insertHr($event)">hr</span>
+        <span @click="addHr($event)">hr</span>
         <!-- 插入 -->
         <span @click="choose(5)">
           <i class="iconfont icon-yulan1"></i>
         </span>
       </div>
-      <textarea name="content" class="layui-textarea fly-editor" v-model="content"  ref="textEdit"></textarea>
+      <textarea name="content" id="edit" class="layui-textarea fly-editor" @focus="focusEvent()" @blur="blurEvent()" v-model="content"  ref="textEdit"></textarea>
     </div>
   </div>
   <div ref="modal">
-    <face :isShow="current === 0" @addEvent="addEvent" @closeEvent="closeModal()"></face>
-    <ImgUpload :isShow="current === 1" @addEvent="addEvent" @closeEvent="closeModal()"></ImgUpload>
-    <LinkAdd :isShow="current === 2"  @addEvent="addEvent"  @closeEvent="closeModal()"></LinkAdd>
-    <Reference :isShow="current === 3"  @addEvent="addEvent" @closeEvent="closeModal()"></Reference>
-    <InsertCode :isShow="current === 4" @addEvent="addEvent" @closeEvent="closeModal()" :width="codeWidth" :height="codeHeight"></InsertCode>
+    <face :isShow="current === 0" @addEvent="addFace" @closeEvent="closeModal()"></face>
+    <ImgUpload :isShow="current === 1" @addEvent="addPic" @closeEvent="closeModal()"></ImgUpload>
+    <LinkAdd :isShow="current === 2"  @addEvent="addLink"  @closeEvent="closeModal()"></LinkAdd>
+    <Reference :isShow="current === 3"  @addEvent="addCode" @closeEvent="closeModal()"></Reference>
+    <InsertCode :isShow="current === 4" @addEvent="addQuote" @closeEvent="closeModal()" :width="codeWidth" :height="codeHeight"></InsertCode>
+    <Preview :isShow="current === 5" :content="content"></Preview>
   </div>
 </div>
 </template>
@@ -60,6 +61,7 @@ import ImgUpload from './ImgUpload'
 import LinkAdd from './LinkAdd'
 import Reference from './Reference'
 import InsertCode from './InsertCode'
+import Preview from './Preview'
 
 export default {
   name: 'Editor',
@@ -69,7 +71,8 @@ export default {
       content: '',
       current: '',
       codeWidth: 400,
-      codeHeight: 200
+      codeHeight: 200,
+      pos: ''
     }
   },
   components: {
@@ -77,11 +80,47 @@ export default {
     ImgUpload,
     LinkAdd,
     Reference,
-    InsertCode
+    InsertCode,
+    Preview
   },
   methods: {
+    // 添加表情
+    addFace (item) {
+      const insertContent = ` face${item}`
+      this.insert(insertContent)
+      this.pos += insertContent.length
+    },
+    // 添加图片链接
+    addPic (item) {
+      const insertContent = ` img[${item}]`
+      this.insert(insertContent)
+      this.pos += insertContent.length
+    },
     addEvent (item) {
       console.log('item', item)
+    },
+    // 添加链接
+    addLink (item) {
+      const insertContent = ` a(${item})[${item}]`
+      this.insert(insertContent)
+      this.pos += insertContent.length
+    },
+    // 添加代码
+    addCode (item) {
+      const insertContent = ` \n[pre]\n${item}[/pre]`
+      this.insert(insertContent)
+      this.pos += insertContent.length
+    },
+    // 添加引用
+    addQuote (item) {
+      const insertContent = ` \n[quote]\n${item}[/quote]`
+      this.insert(insertContent)
+      this.pos += insertContent.length
+    },
+    // 添加hr
+    addHr (e) {
+      this.insert(`\n[hr]`)
+      this.pos += 5
     },
     handleBodyClick (e) {
       e.stopPropagation()
@@ -90,9 +129,6 @@ export default {
       if (!(this.$refs.icons.contains(e.target) || this.$refs.modal.contains(e.target))) { // 判断点击了非自身模块
         this.closeModal()
       }
-    },
-    insertHr (e) {
-      this.content += '[' + e.target.innerText + ']' + '\n'
     },
     choose (index) {
       if (index === this.current) {
@@ -103,6 +139,34 @@ export default {
     },
     closeModal () {
       this.current = ''
+    },
+    insert (val) {
+      if (typeof this.content === 'undefined') {
+        return
+      }
+      let tmp = this.content.split('')
+      tmp.splice(this.pos, 0, val)
+      this.content = tmp.join('')
+    },
+    blurEvent () {
+      this.getPos()
+    },
+    focusEvent () {
+      this.getPos()
+    },
+    // 计算当前的光标位置
+    getPos () {
+      let cursorPos = 0
+      let elem = document.getElementById('edit')
+      if (document.selection) {
+        // ie
+        let selectRange = document.selection.createRange()
+        selectRange.moveStart('character', elem.value.length)
+        cursorPos = selectRange.text.length
+      } else if (elem.selectionStart || elem.selectionStart === '0') {
+        cursorPos = elem.selectionStart
+      }
+      this.pos = cursorPos
     }
   },
   mounted () {

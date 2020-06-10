@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-09 21:47:49
- * @LastEditTime: 2020-06-09 22:26:48
+ * @LastEditTime: 2020-06-10 21:30:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\LinkAdd.vue
@@ -45,7 +45,7 @@ export default {
         this.$pop('shake', '请输入合法链接')
         return
       }
-      this.$emit('addEvent')
+      this.$emit('addEvent', this.link)
       this.$emit('closeEvent')
     },
     cancel () {

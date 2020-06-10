@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-09 22:52:49
- * @LastEditTime: 2020-06-09 23:36:59
+ * @LastEditTime: 2020-06-10 21:39:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\InsertCode.vue
@@ -45,11 +45,12 @@ export default {
         this.$refs.content.focus()
         return
       }
-      this.$emit('addEvent')
+      this.$emit('addEvent', this.insertCode)
+      this.cancel()
     },
     cancel () {
-      this.insertCode = ''
       this.$emit('closeEvent')
+      this.insertCode = ''
     }
   }
 }
