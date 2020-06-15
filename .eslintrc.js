@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:28
+ * @LastEditTime: 2020-06-14 21:03:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\.eslintrc.js
+ */
 module.exports = {
   root: true,
   env: {

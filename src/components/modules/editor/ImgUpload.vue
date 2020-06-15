@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-08 21:52:04
- * @LastEditTime: 2020-06-09 22:13:05
+ * @LastEditTime: 2020-06-14 22:30:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\ImgUpload.vue
@@ -9,7 +9,7 @@
 <!--  -->
 <template>
   <transition name="fade">
-    <div class="layui-layer layui-layer-page layui-layer-border edit-content" v-show="isShow">
+    <div class="layui-layer-page layui-layer-border edit-content" v-show="isShow">
       <div class="layui-layer-title">插入图片</div>
       <div class="layui-layer-content">
         <ul class="layui-form layui-form-pane">

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 14:41:50
- * @LastEditTime: 2020-06-10 22:02:30
+ * @LastEditTime: 2020-06-14 22:34:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\index.vue
@@ -75,6 +75,7 @@ export default {
       pos: ''
     }
   },
+  props: ['initContent'],
   components: {
     Face,
     ImgUpload,
@@ -82,6 +83,15 @@ export default {
     Reference,
     InsertCode,
     Preview
+  },
+  watch: {
+    initContent (newval, oldval) {
+      this.content = newval
+    }
+  },
+  updated () {
+    this.$emit('changeContent', this.content)
+    // console.log('content', this.content)
   },
   methods: {
     // 添加表情
@@ -233,5 +243,9 @@ export default {
   top: 45px;
   left: 0;
   z-index: 9;
+  background: #fff;
+}
+.layui-layer-prompt {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
 }
 </style>

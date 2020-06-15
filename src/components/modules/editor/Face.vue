@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 19:51:08
- * @LastEditTime: 2020-06-10 20:56:16
+ * @LastEditTime: 2020-06-14 22:30:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\Face.vue
@@ -9,7 +9,7 @@
 <!--  -->
 <template>
   <transition name="fade">
-      <div class="layui-layer layui-layer-tips layui-edit-face edit-content">
+      <div class="layui-layer-tips layui-edit-face edit-content">
       <div class="layui-layer-content" v-show="isShow">
         <ul class="layui-clear">
           <li v-for="(value, key) in lists" :key="key" @click="handleFaceClick(key)">

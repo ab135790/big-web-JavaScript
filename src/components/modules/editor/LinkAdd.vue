@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-09 21:47:49
- * @LastEditTime: 2020-06-10 21:30:21
+ * @LastEditTime: 2020-06-14 22:30:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\LinkAdd.vue
@@ -9,7 +9,7 @@
 <!--  -->
 <template>
   <transition name="fade">
-    <div class="layui-layer layui-layer-page layui-layer-prompt edit-content" v-show="isShow">
+    <div class="layui-layer-page layui-layer-prompt edit-content" v-show="isShow">
       <div class="layui-layer-title">请输入合法链接</div>
       <div class="layui-layer-content">
         <input type="text" class="layui-layer-input" ref="inputItem" v-model="link">

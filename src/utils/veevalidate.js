@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-07 13:25:15
+ * @LastEditTime: 2020-06-14 20:52:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\veevalidate.js

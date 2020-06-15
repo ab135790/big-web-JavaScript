@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-10 21:50:04
- * @LastEditTime: 2020-06-10 23:23:34
+ * @LastEditTime: 2020-06-14 20:22:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\escapeHtml.js
@@ -38,7 +38,6 @@ const escapeHtml = (val = '') => {
     const linkName = /\((.+)\)/
     console.log('link', link, 'title', title, 'linkName', linkName)
     group.map(item => {
-      debugger
       const nameGroup = item.match(linkName)
       let name = ''
       if (nameGroup.length > 0) {

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:28
- * @LastEditTime: 2020-06-06 15:59:47
+ * @LastEditTime: 2020-06-14 21:18:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\api\content.js
@@ -32,10 +32,14 @@ const getLinks = () => {
 // 图片上传接口
 const uploadImg = formData => axios.post('/content/upload', formData)
 
+// 发帖接口
+const addPost = data => axios.post('/content/add', { ...data })
+
 export {
   getList,
   getTips,
   getLinks,
   getTop,
-  uploadImg
+  uploadImg,
+  addPost
 }

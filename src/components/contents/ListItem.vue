@@ -23,7 +23,7 @@
                 <i class="iconfont icon-pinglun1" title="回答"></i> {{item.answer}}
               </span>
           </div>
-          <div class="fly-list-badge" v-show="item.tags.length">
+          <div class="fly-list-badge" v-show="item.tags.length > 0 && item.tags[0].name !== ''">
             <span class="layui-badge" v-for="(tag, index) in item.tags" :key="'tag' + index" :class="tag.class">{{tag.name}}</span>
           </div>
         </li>
@@ -39,9 +39,13 @@
 
 <script>
 import moment from 'moment'
+// import relativeTime from 'dayjs/plugin/relativeTime'
 // 显示中文
 import 'moment/locale/zh-cn'
 import _ from 'lodash'
+
+// moment.extend(relativeTime)
+
 export default {
   name: 'ListItem',
   props: {
@@ -98,7 +102,7 @@ export default {
         return moment(date).format('YYYY-MM-DD')
       } else {
         // 1小时前，xx小时前，X天前
-        return moment(date).from(moment())
+        return moment(date).locale('zh-cn').from(moment())
       }
     }
   }

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-09 22:52:49
- * @LastEditTime: 2020-06-10 21:39:28
+ * @LastEditTime: 2020-06-14 22:30:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\InsertCode.vue
@@ -9,7 +9,7 @@
 <!--  -->
 <template>
   <transition name="fade">
-    <div class="layui-layer layui-layer-page layui-layer-prompt edit-content" v-show="isShow" :style="{'width': width + 'px', 'height': height + 'px' }">
+    <div class="layui-layer-page layui-layer-prompt edit-content" v-show="isShow" :style="{'width': width + 'px', 'height': height + 'px' }">
       <div class="layui-layer-title">请插入代码或内容</div>
       <div class="layui-layer-content">
         <textarea  ref="content" placeholder="请输入内容" v-model="insertCode" name="content" class="layui-textarea"></textarea>

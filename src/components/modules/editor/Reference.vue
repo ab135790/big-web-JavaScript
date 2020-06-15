@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-09 22:20:18
- * @LastEditTime: 2020-06-10 21:40:45
+ * @LastEditTime: 2020-06-14 22:30:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\reference.vue
@@ -9,7 +9,7 @@
 <!--  -->
 <template>
   <transition name="fade">
-    <div class="layui-layer layui-layer-page layui-layer-prompt edit-content" v-show="isShow">
+    <div class="layui-layer-page layui-layer-prompt edit-content" v-show="isShow">
       <div class="layui-layer-title">请输入引用内容</div>
       <div class="layui-layer-content">
         <textarea cols="60" ref="content" placeholder="请输入内容" v-model="referenceContent" name="content" class="layui-textarea"></textarea>

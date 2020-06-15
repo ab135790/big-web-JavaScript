@@ -1,5 +1,14 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:29
+ * @LastEditTime: 2020-06-14 21:10:53
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\utils\veevalidate-i18n.js
+ */
 import { extend, configure } from 'vee-validate'
-import { required, email, min, length, confirmed, max } from 'vee-validate/dist/rules'
+// eslint-disable-next-line camelcase
+import { required, email, min, length, confirmed, max, is_not } from 'vee-validate/dist/rules'
 import { i18n } from './i18n'
 // 结合vuei18n的写法
 configure({
@@ -15,6 +24,7 @@ extend('max', max)
 extend('required', required)
 extend('length', length)
 extend('confirmed', confirmed)
+extend('is_not', is_not)
 extend('isNumber', {
   validate (value) {
     const reg = /^[0-9]*$/

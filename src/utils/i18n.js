@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-07 13:22:52
+ * @LastEditTime: 2020-06-14 21:07:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\i18n.js
@@ -24,7 +24,9 @@ const i18n = new VueI18n({
         code: '验证码',
         isNumber: '昵称',
         isPassword: '',
-        repassword: '密码'
+        repassword: '密码',
+        title: '标题',
+        catalog: '分类'
       },
       validation: {
         ...zh.messages,
@@ -33,7 +35,11 @@ const i18n = new VueI18n({
         name: '不能以纯数字为{_field_}',
         isNumber: '不能以纯数字为{_field_}',
         isPassword: '密码不能和{_target_}匹配',
-        confirmed: '新密码和{_target_}不匹配'
+        confirmed: '新密码和{_target_}不匹配',
+        title: '请输入{_field_}',
+        catalog: {
+          is_not: '请选择{_field_}'
+        }
       }
     }
   }
