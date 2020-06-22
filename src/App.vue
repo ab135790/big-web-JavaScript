@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:28
- * @LastEditTime: 2020-06-08 22:04:17
+ * @LastEditTime: 2020-06-18 22:22:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\App.vue
@@ -63,5 +63,10 @@ export default {
 }
 .text-right {
   text-align: right;
+}
+.d-flxe {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 </style>

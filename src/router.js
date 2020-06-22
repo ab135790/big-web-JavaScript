@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-14 21:43:14
+ * @LastEditTime: 2020-06-16 22:05:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
@@ -35,6 +35,7 @@ const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NoFound.
 const Confirm = () => import(/* webpackChunkName: 'Confirm' */ '@/views/Confirm.vue')
 const Reset = () => import(/* webpackChunkName: 'Reset' */ '@/views/Reset.vue')
 const Add = () => import(/* webpackChunkName: 'Add' */ '@/components/contents/Add.vue')
+const Detail = () => import(/* webpackChunkName: 'Detail' */ '@/components/contents/Detail.vue')
 Vue.use(Router)
 
 const router = new Router({
@@ -107,6 +108,11 @@ const router = new Router({
       name: 'add',
       meta: { requiresAuth: true },
       component: Add
+    },
+    {
+      path: '/detail',
+      name: 'detail',
+      component: Detail
     },
     {
       path: '/user:uid',

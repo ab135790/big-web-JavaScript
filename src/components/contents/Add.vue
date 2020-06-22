@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 14:01:18
- * @LastEditTime: 2020-06-14 22:52:25
+ * @LastEditTime: 2020-06-16 22:24:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\contents\Add.vue
@@ -88,42 +88,42 @@
                     <div class="layui-form-mid layui-word-aux">发表后无法更改飞吻</div>
                   </div>
                 </div>
-                    <div class='layui-form-item'>
-                      <Validation-Provider
-                        ref='codeField'
-                        rules='required|length:4'
-                        name='code'
-                        v-slot='{ errors }'
+                <div class='layui-form-item'>
+                  <Validation-Provider
+                    ref='codeField'
+                    rules='required|length:4'
+                    name='code'
+                    v-slot='{ errors }'
+                  >
+                    <div class='layui-row'>
+                      <label for='L_vercode' class='layui-form-label'
+                        >验证码</label
                       >
-                        <div class='layui-row'>
-                          <label for='L_vercode' class='layui-form-label'
-                            >验证码</label
-                          >
-                          <div class='layui-input-inline'>
-                            <input
-                              type='text'
-                              name='code'
-                              v-model='code'
-                              placeholder='请输入验证码'
-                              autocomplete='off'
-                              class='layui-input'
-                              maxlength="4"
-                            />
-                          </div>
-                          <div class>
-                            <span
-                              class='svg'
-                              style='color: #c00'
-                              @click="_getCode()"
-                              v-html='svg'
-                            ></span>
-                          </div>
-                        </div>
-                        <div class='layui-form-mid'>
-                          <span style='color: #c00'>{{ errors[0] }}</span>
-                        </div>
-                      </Validation-Provider>
+                      <div class='layui-input-inline'>
+                        <input
+                          type='text'
+                          name='code'
+                          v-model='code'
+                          placeholder='请输入验证码'
+                          autocomplete='off'
+                          class='layui-input'
+                          maxlength="4"
+                        />
+                      </div>
+                      <div class>
+                        <span
+                          class='svg'
+                          style='color: #c00'
+                          @click="_getCode()"
+                          v-html='svg'
+                        ></span>
+                      </div>
                     </div>
+                    <div class='layui-form-mid'>
+                      <span style='color: #c00'>{{ errors[0] }}</span>
+                    </div>
+                  </Validation-Provider>
+                </div>
                 <div class="layui-form-item">
                   <button type="button" class="layui-btn" @click="validate().then(_submit)">立即发布</button>
                 </div>
