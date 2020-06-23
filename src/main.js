@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-06 22:06:43
+ * @LastEditTime: 2020-06-23 23:45:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\main.js
@@ -10,7 +10,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import filters from '@/utils/filter'
 // import axios from 'axios';
 // import '@/utils/veevalidate';
 // 结合vuei18n的写法
@@ -20,6 +20,10 @@ import Pop from './components/modules/pop'
 
 Vue.use(Alert)
 Vue.use(Pop)
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 // import './local/index';
 
 // import VeeValidate, { Validator } from 'vee-validate'

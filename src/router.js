@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-16 22:05:50
+ * @LastEditTime: 2020-06-23 23:14:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
@@ -110,12 +110,13 @@ const router = new Router({
       component: Add
     },
     {
-      path: '/detail',
+      path: '/detail/:tid',
       name: 'detail',
+      props: true,
       component: Detail
     },
     {
-      path: '/user:uid',
+      path: '/user/:uid',
       name: 'user',
       props: true,
       component: User

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:28
- * @LastEditTime: 2020-06-14 21:18:13
+ * @LastEditTime: 2020-06-23 23:11:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\api\content.js
@@ -35,11 +35,14 @@ const uploadImg = formData => axios.post('/content/upload', formData)
 // 发帖接口
 const addPost = data => axios.post('/content/add', { ...data })
 
+// 评论列表
+const getDetail = tid => axios.get('/public/content/detail?tid=' + tid)
 export {
   getList,
   getTips,
   getLinks,
   getTop,
   uploadImg,
-  addPost
+  addPost,
+  getDetail
 }

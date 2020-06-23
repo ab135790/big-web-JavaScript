@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import moment from 'moment'
+// import moment from 'dayjs'
 // import relativeTime from 'dayjs/plugin/relativeTime'
-// 显示中文
-import 'moment/locale/zh-cn'
+// // 显示中文
+// import 'dayjs/locale/zh-cn'
 import _ from 'lodash'
 
 // moment.extend(relativeTime)
@@ -94,18 +94,18 @@ export default {
     more () {
       this.$emit('nextPage')
     }
-  },
-  filters: {
-    moment (date) {
-      // 超过7天，显示日期
-      if (moment(date).isBefore(moment().subtract(7, 'day'))) {
-        return moment(date).format('YYYY-MM-DD')
-      } else {
-        // 1小时前，xx小时前，X天前
-        return moment(date).locale('zh-cn').from(moment())
-      }
-    }
   }
+  // filters: {
+  //   moment (date) {
+  //     // 超过7天，显示日期
+  //     if (moment(date).isBefore(moment().subtract(7, 'day'))) {
+  //       return moment(date).format('YYYY-MM-DD')
+  //     } else {
+  //       // 1小时前，xx小时前，X天前
+  //       return moment(date).locale('zh-cn').from(moment())
+  //     }
+  //   }
+  // }
 }
 </script>
 
