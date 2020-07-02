@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-16 22:29:37
- * @LastEditTime: 2020-06-23 22:40:03
+ * @LastEditTime: 2020-06-25 18:37:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\page\Index.vue
@@ -36,7 +36,11 @@
           <template v-else>尾页</template>
         </a>
     </div>
-    <div class="total ml20" v-if="hasTotal">到第<input type="text" class="imooc-input plr10">页 共 total 页</div>
+    <div class="total ml20" v-if="hasTotal">到第<input
+    type="text"
+    v-model="pageVal"
+    @change="getPage()"
+    class="imooc-input plr10">页 共 {{pages.length}} 页</div>
     <template v-if="hasSelect">
       <div class="layui-input-inline" @click="chooseFav()">
         <div class="layui-unselect layui-form-select ml10" :class="{'layui-form-selected': isSelect}">
@@ -69,7 +73,8 @@ export default {
       options: [10, 15, 20, 30, 50, 100],
       isSelect: false,
       limit: 10,
-      pages: ''
+      pages: '',
+      pageVal: ''
     }
   },
   props: {
@@ -110,6 +115,11 @@ export default {
       defualt: 20
     }
   },
+  watch: {
+    total (newVal, oldVal) {
+      this.initPages()
+    }
+  },
   mounted () {
     // 设置select的内容
     this.limit = this.size
@@ -123,7 +133,6 @@ export default {
       const len = Math.ceil(this.total / this.limit)
       // 5 -> [1, 2, 3, 4, 5]
       this.pages = _.range(1, (len + 1))
-      console.log('pages', this.pages, 'total', this.total)
     },
     chooseFav () {
       this.isSelect = !this.isSelect
@@ -135,6 +144,7 @@ export default {
       this.initPages()
       // 当页面上的limit发生变化之后，调整current数值
       this.$emit('changeCurrent', Math.floor(this.limit * this.current / this.options[index]))
+      this.$emit('changeLimit', this.options[index])
     },
     home () {
       this.$emit('chageCurrent', 0)
@@ -155,7 +165,16 @@ export default {
       this.$emit('chageCurrent', this.current + 1)
     },
     changeIndex (val) {
+      if (this.current === val) return
       this.$emit('chageCurrent', val)
+    },
+    getPage () {
+      console.log(this.pageVal)
+      if (this.pageVal <= this.pages.length && this.pageVal >= 1) {
+        this.$emit('chageCurrent', parseInt(this.pageVal) - 1)
+      } else {
+        this.pageVal = ''
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-23 23:14:29
+ * @LastEditTime: 2020-07-02 22:55:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\router.js
@@ -35,7 +35,9 @@ const NoFound = () => import(/* webpackChunkName: 'NoFound' */ '@/views/NoFound.
 const Confirm = () => import(/* webpackChunkName: 'Confirm' */ '@/views/Confirm.vue')
 const Reset = () => import(/* webpackChunkName: 'Reset' */ '@/views/Reset.vue')
 const Add = () => import(/* webpackChunkName: 'Add' */ '@/components/contents/Add.vue')
+const Edit = () => import(/* webpackChunkName: 'Edit' */ '@/components/contents/Edit.vue')
 const Detail = () => import(/* webpackChunkName: 'Detail' */ '@/components/contents/Detail.vue')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -108,6 +110,31 @@ const router = new Router({
       name: 'add',
       meta: { requiresAuth: true },
       component: Add
+    },
+    {
+      path: '/edit/:tid',
+      props: true,
+      name: 'edit',
+      meta: { requiresAuth: true },
+      component: Edit,
+      beforeEnter (to, from, next) {
+        if (['detail', 'myPost'].indexOf(from.name) !== -1 && to.params.page && to.params.page.isEnd === '0') {
+          next()
+        } else {
+          // 用户在edit页面刷新的情况
+          const editData = localStorage.getItem('editData')
+          if (editData && editData !== '') {
+            const editObj = JSON.parse(editData)
+            if (editObj.isEnd === '0') {
+              next()
+            } else {
+              next('/')
+            }
+          } else {
+            next('/')
+          }
+        }
+      }
     },
     {
       path: '/detail/:tid',
@@ -191,6 +218,7 @@ const router = new Router({
     },
     {
       path: '/404',
+      name: '404',
       component: NoFound
     },
     {

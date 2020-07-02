@@ -319,4 +319,4 @@ var realUrl = arguments[1];
 var port = arguments[2] ? arguments[2] : 36742;
 var server = http.createServer(onProxy);
 server.listen(port);
-console.log(arguments.length > 0 ? ("内网测试，Mock数据正监听端口：" + port) : "正在运行中，请用DOClever的接口测试页面进行内网测试！");
+console.log(arguments.length > 0 ? ("内网测试，Mock数据正监听端口" + port) : "姝ｅ湪杩愯涓紝璇风敤DOClever鐨勬帴鍙ｆ祴璇曢〉闈㈣繘琛屽唴缃戞祴璇曪紒");

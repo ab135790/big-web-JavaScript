@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-10 21:50:04
- * @LastEditTime: 2020-06-14 20:22:20
+ * @LastEditTime: 2020-06-26 20:39:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\escapeHtml.js
@@ -15,7 +15,7 @@ const escapeHtml = (val = '') => {
   const face = /\sface\[\W{1,}]/g
   if (face.test(result)) {
     let group = result.match(face)
-    console.log('group', group)
+    // console.log('group', group)
     group.map(item => {
       const key = item.match(/\[\S+\]/g)[0]
       result = result.replace(item, `<img src="${faces[key]}">`)
@@ -26,7 +26,7 @@ const escapeHtml = (val = '') => {
   if (img.test(result)) {
     const group = result.match(img)
     group.map(item => {
-      console.log('item', item)
+      // console.log('item', item)
       result = result.replace(item, `<img src="${item.substr(4, item.length - 5)}">`)
     })
   }
@@ -36,7 +36,7 @@ const escapeHtml = (val = '') => {
     const group = result.match(link)
     const title = /\[(.+)\]/
     const linkName = /\((.+)\)/
-    console.log('link', link, 'title', title, 'linkName', linkName)
+    // console.log('link', link, 'title', title, 'linkName', linkName)
     group.map(item => {
       const nameGroup = item.match(linkName)
       let name = ''

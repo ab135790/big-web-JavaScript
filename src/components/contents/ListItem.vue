@@ -2,19 +2,19 @@
     <div>
       <ul class="fly-list">
         <li v-for="(item, index) in items" :key="'listitem' + index">
-          <a href="user/home.html" class="fly-avatar">
-            <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
-          </a>
+          <router-link :to="{ name: 'detail', params: { tid: item._id }}" class="fly-avatar">
+            <img :src="item.uid && item.uid.pic ? item.uid.pic : require('@/assets/img/default.png')">
+          </router-link>
           <h2>
-            <a class="layui-badge">{{item.catalog}}</a>
-            <a href="jie/detail.html">{{item.title}}</a>
+            <a class="layui-badge">{{item.catalog.text}}</a>
+            <router-link :to="{ name: 'detail', params: { tid: item._id }}">{{item.title}}</router-link>
           </h2>
           <div class="fly-list-info">
-            <a href="user/home.html">
+            <router-link :to="{ name: 'user', params: { uid: item.uid._id }}">
               <cite>{{item.uid.name}}</cite>
               <!--<i class="iconfont icon-renzheng" title="认证信息：XXX"></i>-->
               <i class="layui-badge fly-badge-vip" v-if="item.uid.isVip !== '0'">{{'VIP' + item.uid.isVip}}</i>
-            </a>
+            </router-link>
             <span>{{item.created | moment}}</span>
 
             <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> {{item.fav}}</span>

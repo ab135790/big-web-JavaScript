@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-17 16:07:29
+ * @LastEditTime: 2020-06-29 23:05:08
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \big-web-JavaScript\src\mixin\_mixin.js
+ */
 import { getList } from '@/api/content'
 export const mixin = {
   data () {

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-06-07 13:05:46
+ * @LastEditTime: 2020-07-01 21:47:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\sidebar\Sign.vue
@@ -85,7 +85,21 @@ export default {
       this.countDowm()
     }
   },
+  watch: {
+    userInfo (newval, oldval) {
+      console.log('newval', newval, 'oldval', oldval)
+      if (newval.isSign === true) {
+        this.countDowm()
+        this.isSing = true
+      } else {
+        this.isSing = false
+      }
+    }
+  },
   computed: {
+    userInfo () {
+      return this.$store.state.userInfo
+    },
     isLogin () {
       return this.$store.state.isLogin
     },

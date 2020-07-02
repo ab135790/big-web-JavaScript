@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-31 22:28:57
+ * @LastEditTime: 2020-06-27 20:58:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\axios.js
@@ -101,7 +101,7 @@ class HttpRequest {
       method: 'get',
       url: url
     }, config)
-    console.log('options', options)
+    // console.log('options', options)
     return this.request(options)
   }
   // post 请求

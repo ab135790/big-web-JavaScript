@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-18 21:38:16
- * @LastEditTime: 2020-05-19 22:23:19
+ * @LastEditTime: 2020-07-02 23:35:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\views\Center.vue

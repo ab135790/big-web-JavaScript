@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-31 02:30:07
+ * @LastEditTime: 2020-07-02 23:32:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\Header.vue
@@ -70,9 +70,9 @@
           @mouseleave="hide()"
           class="layui-nav-item"
           >
-            <a
+            <router-link
               class="fly-nav-avatar"
-              href="javascript:;"
+              :to="{name: 'user-center'}"
             >
               <cite class="layui-hide-xs">{{ userInfo.name }}</cite>
               <i
@@ -84,8 +84,8 @@
                 v-show="userInfo.isVip !== 0"
                 >VIP{{ userInfo.isVip }}</i
               >
-              <img :src=" userInfo.pic || 'https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg' "/>
-            </a>
+              <img :src="userInfo.pic || require('@/assets/img/default.png')"/>
+            </router-link>
             <dl class="layui-nav-child layui-anim layui-anim-upbit" :class="{ 'layui-show': isHover }">
               <dd>
                 <router-link :to="{name: 'myinfo'}">
@@ -98,7 +98,7 @@
                 </router-link>
               </dd>
               <dd>
-                <router-link to="/">
+                <router-link :to="{name: 'user', params: { uid: userInfo._id }}">
                   <i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页
                 </router-link>
               </dd>

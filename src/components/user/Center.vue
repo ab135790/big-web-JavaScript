@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-18 22:14:14
- * @LastEditTime: 2020-05-19 21:29:42
+ * @LastEditTime: 2020-07-01 21:58:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\user\Center.vue
@@ -9,14 +9,14 @@
 <!--  -->
 <template>
   <div class="panel main pd20">
-    <div class="msg">Hi, Admin,你已经是我们的正式会员</div>
+    <div class="msg">Hi, {{userInfo.name}},您已经是我们的正式会员</div>
     <div class="layui-row layui-col-space20">
       <div class="layui-col-md6">
         <div class="panel border">
           <div class="title">我的会员信息</div>
           <div class="content">
-            <p>积分经验值: 60</p>
-            <p>您当前为: 非VIP</p>
+            <p>积分经验值: <cite>{{userInfo.favs}}</cite></p>
+            <p>您当前为: <cite>{{userInfo.isVip === '0' ? '非VIP' : 'VIP' + userInfo.isVip}}</cite></p>
           </div>
         </div>
       </div>
@@ -31,49 +31,49 @@
               <li class="layui-col-sm3 layui-col-xs4">
                 <a href="">
                   <div class="layui-icon layui-icon-set shortcut"></div>
+                  <span>修改信息</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-face-smile shortcut"></div>
+                  <span>修改头像</span>
+                </a>
+              </li>
+              <li class="layui-col-sm3 layui-col-xs4">
+                <a href="">
+                  <div class="layui-icon layui-icon-password shortcut"></div>
                   <span>修改密码</span>
                 </a>
               </li>
               <li class="layui-col-sm3 layui-col-xs4">
                 <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
+                  <div class="layui-icon layui-icon-app shortcut"></div>
+                  <span>账号绑定</span>
                 </a>
               </li>
               <li class="layui-col-sm3 layui-col-xs4">
                 <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
+                  <div class="layui-icon layui-icon-add-circle shortcut"></div>
+                  <span>发布新贴</span>
                 </a>
               </li>
               <li class="layui-col-sm3 layui-col-xs4">
                 <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
+                  <div class="layui-icon layui-icon-share shortcut"></div>
+                  <span>查看分享</span>
                 </a>
               </li>
               <li class="layui-col-sm3 layui-col-xs4">
                 <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
+                  <div class="layui-icon layui-icon-username shortcut"></div>
+                  <span>我的贴子</span>
                 </a>
               </li>
               <li class="layui-col-sm3 layui-col-xs4">
                 <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
-                </a>
-              </li>
-              <li class="layui-col-sm3 layui-col-xs4">
-                <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
-                </a>
-              </li>
-              <li class="layui-col-sm3 layui-col-xs4">
-                <a href="">
-                  <div class="layui-icon layui-icon-set shortcut"></div>
-                  <span>修改密码</span>
+                  <div class="layui-icon layui-icon-rate-solid shortcut"></div>
+                  <span>我的收藏</span>
                 </a>
               </li>
               <li class="layui-col-sm3 layui-col-xs4">
@@ -111,6 +111,7 @@
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
+import { getInfo } from '@/api/user'
 import Sign from '@/components/sidebar/Sign.vue'
 export default {
   name: 'user-center',
@@ -120,8 +121,25 @@ export default {
 
     }
   },
+  computed: {
+    userInfo () {
+      return this.$store.state.userInfo
+    }
+  },
   components: {
     Sign
+  },
+  mounted () {
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo () {
+      getInfo({ uid: this.userInfo._id }).then(res => {
+        if (res.code === 200) {
+          this.$store.commit('setUserInfo', res.data)
+        }
+      })
+    }
   }
 }
 </script>
