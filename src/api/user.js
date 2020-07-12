@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 20:12:30
- * @LastEditTime: 2020-07-02 22:19:16
+ * @LastEditTime: 2020-07-12 22:06:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\api\user.js
@@ -47,6 +47,9 @@ const getCommentList = (data) => axios.get('/public/latest-comment?' + qs.string
 // 获取发表的文章列表
 const getPostPublic = data => axios.get('/public/latest-post?' + qs.stringify(data))
 
+// 获取用户未读消息
+const getMsg = data => axios.get('/user/getmsg?' + qs.stringify(data))
+
 export {
   userSign,
   updateUserInfo,
@@ -60,5 +63,6 @@ export {
   getCollectListByUid,
   getInfo,
   getCommentList,
-  getPostPublic
+  getPostPublic,
+  getMsg
 }

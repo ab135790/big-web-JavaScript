@@ -69,4 +69,26 @@ export default {
   flex-flow: row nowrap;
   align-items: center;
 }
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+@keyframes bounceOut {
+  0% {
+    transform: scale(1)
+  }
+  30% {
+    transform: scale(1.05)
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7)
+  }
+}
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-16 22:03:57
- * @LastEditTime: 2020-07-02 23:26:42
+ * @LastEditTime: 2020-07-12 21:40:11
  * @LastEditors: Please set LastEditors
  * @Description: In uid Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\contents\Detail.vue

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-07 14:41:50
- * @LastEditTime: 2020-06-14 22:34:58
+ * @LastEditTime: 2020-07-03 22:17:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\modules\editor\index.vue
@@ -197,28 +197,6 @@ export default {
 </script>
 <style lang='scss'>
 // @import url(); 引入公共css类
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5)
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1)
-  }
-}
-@keyframes bounceOut {
-  0% {
-    transform: scale(1)
-  }
-  30% {
-    transform: scale(1.05)
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.7)
-  }
-}
 .fade-leave-active {
   animation: bounceOut .3s;
 }

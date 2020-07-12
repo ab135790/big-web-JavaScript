@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-23 22:58:24
- * @LastEditTime: 2020-06-27 21:52:57
+ * @LastEditTime: 2020-07-12 22:07:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\api\comments.js
@@ -35,10 +35,14 @@ const setCommentBest = options => axios.get('/comments/accept?' + qs.stringify(o
 // 设置点赞
 const setHands = options => axios.get('/comments/hands?' + qs.stringify(options))
 
+// 删除指定评论信息
+const delComments = data => axios.get('/comments/delcomments?' + qs.stringify(data))
+
 export {
   getComments,
   addComment,
   updateComment,
   setCommentBest,
-  setHands
+  setHands,
+  delComments
 }

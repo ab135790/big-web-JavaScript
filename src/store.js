@@ -1,13 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-05-30 20:47:05
+ * @LastEditTime: 2020-07-12 20:30:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\store.js
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
+import WebSocketClient from './utils/websocket'
 
 Vue.use(Vuex)
 
@@ -16,9 +17,15 @@ export default new Vuex.Store({
     sid: '',
     isLogin: false,
     token: '',
-    userInfo: {} // 登录后存储用户信息
+    isHide: false,
+    userInfo: null, // 登录后存储用户信息
+    num: 0
   },
   mutations: {
+    initWebSocket (state, config) {
+      state.ws = new WebSocketClient(config)
+      state.ws.init()
+    },
     setSid (state, value) {
       state.sid = value
     },
@@ -35,9 +42,14 @@ export default new Vuex.Store({
     },
     setIsLogin (state, value) {
       state.isLogin = value
+    },
+    setMessage (state, value) {
+      state.num = value.message ? value.message : 0
     }
   },
   actions: {
-
+    message ({ commit }, msg) {
+      commit('setMessage', msg)
+    }
   }
 })

@@ -1,7 +1,8 @@
+import _ from 'lodash';
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-07-02 23:32:41
+ * @LastEditTime: 2020-07-12 20:29:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\Header.vue
@@ -108,6 +109,15 @@
               </dd>
             </dl>
           </li>
+          <div class="fly-nav-msg" v-show="num !== 0">{{num}}</div>
+          <transition name="fade">
+            <div class="layui-layer-tips" v-show="hasMsg">
+              <div class="layui-layer-content">
+                您有{{num}}条未读消息
+                <i class="layui-layer-TipsG layui-layer-TipsB"></i>
+              </div>
+            </div>
+          </transition>
         </template>
       </ul>
     </div>
@@ -115,15 +125,31 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Header',
   data () {
     return {
       isHover: false, // 不展示
-      hoverCtrl: {}
+      hoverCtrl: {},
+      hasMsg: false
+    }
+  },
+  watch: {
+    num (newval, oldval) {
+      if (newval !== oldval) {
+        this.hasMsg = true
+        setTimeout(() => {
+          this.hasMsg = false
+        }, 2000)
+      }
     }
   },
   computed: {
+    ...mapState({
+      num: state => state.num
+    }),
     isLogin () {
       return this.$store.state.isLogin
     },
@@ -175,9 +201,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fly-logo {
-  left: -15px;
-  top: -10px;
-  margin-left: 15px;
-}
+  .fly-logo {
+    left: -15px;
+    top: -10px;
+    margin-left: 15px;
+  }
+  .layui-layer-tips {
+    position: fixed;
+    white-space: nowrap;
+    right: 0;
+    top: 60px;
+    z-index: 2000;
+  }
 </style>
