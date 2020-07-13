@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-07-12 20:30:59
+ * @LastEditTime: 2020-07-13 21:12:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\store.js
@@ -44,7 +44,7 @@ export default new Vuex.Store({
       state.isLogin = value
     },
     setMessage (state, value) {
-      state.num = value.message ? value.message : 0
+      state.num = value
     }
   },
   actions: {

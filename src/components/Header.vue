@@ -2,7 +2,7 @@ import _ from 'lodash';
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-07-12 20:29:44
+ * @LastEditTime: 2020-07-13 21:14:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\Header.vue
@@ -109,11 +109,11 @@ import _ from 'lodash';
               </dd>
             </dl>
           </li>
-          <div class="fly-nav-msg" v-show="num !== 0">{{num}}</div>
+          <div class="fly-nav-msg" v-show="num.message && num.message !== 0">{{num.message}}</div>
           <transition name="fade">
             <div class="layui-layer-tips" v-show="hasMsg">
               <div class="layui-layer-content">
-                您有{{num}}条未读消息
+                您有{{num.message}}条未读消息
                 <i class="layui-layer-TipsG layui-layer-TipsB"></i>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default {
   },
   watch: {
     num (newval, oldval) {
-      if (newval !== oldval) {
+      if (newval.event && newval !== oldval) {
         this.hasMsg = true
         setTimeout(() => {
           this.hasMsg = false

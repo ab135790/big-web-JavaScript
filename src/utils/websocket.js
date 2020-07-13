@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-12 19:29:08
- * @LastEditTime: 2020-07-12 20:06:53
+ * @LastEditTime: 2020-07-13 21:30:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\utils\websocket.js
@@ -13,13 +13,16 @@ class WebSocketClient {
     const defaultConfig = {
       url: '127.0.0.1',
       port: '3001',
-      protocol: 'ws'
+      protocol: 'ws',
+      timeInterval: 5 * 1000
     }
     const finalConfig = { ...defaultConfig, ...config }
     this.wss = {}
     this.port = finalConfig.port
     this.url = finalConfig.url
     this.protocol = finalConfig.protocol
+    this.handle = null
+    this.timeInterval = finalConfig.timeInterval
   }
   init () {
     this.ws = new WebSocket(`${this.protocol}://${this.url}:${this.port}`)
@@ -39,6 +42,7 @@ class WebSocketClient {
       event: 'auth',
       message: 'Bearer ' + store.state.token
     }))
+    this.checkServer()
   }
   onMessage (event) {
     if (this.isShow) return
@@ -50,6 +54,7 @@ class WebSocketClient {
         // this.$router.push({ name: 'login' })
         break
       case 'heartbeat':
+        this.checkServer()
         this.ws.send(JSON.stringify({
           event: 'heartbeat',
           message: 'pong'
@@ -69,7 +74,15 @@ class WebSocketClient {
   onError () {
     setTimeout(() => {
       this.init()
-    }, 1000)
+    }, 2000)
+  }
+  checkServer () {
+    clearTimeout(this.handle)
+    this.handle = setTimeout(() => {
+      this.onClose()
+      this.onError()
+      // 设置1ms的延时，调试在服务器测未及时响应时，客户端的反应
+    }, this.timeInterval + 1000)
   }
 }
 

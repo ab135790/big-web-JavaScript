@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 20:12:30
- * @LastEditTime: 2020-07-12 22:06:20
+ * @LastEditTime: 2020-07-13 21:05:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\api\user.js
@@ -50,6 +50,9 @@ const getPostPublic = data => axios.get('/public/latest-post?' + qs.stringify(da
 // 获取用户未读消息
 const getMsg = data => axios.get('/user/getmsg?' + qs.stringify(data))
 
+// 删除指定评论信息
+const setMsg = data => axios.get('/user/setmsg?' + qs.stringify(data))
+
 export {
   userSign,
   updateUserInfo,
@@ -64,5 +67,6 @@ export {
   getInfo,
   getCommentList,
   getPostPublic,
-  getMsg
+  getMsg,
+  setMsg
 }
