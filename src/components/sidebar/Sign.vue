@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-17 16:07:29
- * @LastEditTime: 2020-07-01 21:47:18
+ * @LastEditTime: 2020-07-14 20:26:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \big-web-JavaScript\src\components\sidebar\Sign.vue
@@ -73,11 +73,11 @@ export default {
   mounted () {
     // 判断用户的上一次签到时间与签到状态
     // 如果用户上一次签到时间与当天的签到日期相差1天，允许用户进行签到
-    const isSign = this.$store.state.userInfo.isSign
-    const lastSign = this.$store.state.userInfo.lastSign
+    const isSign = this.$store.state.userInfo && this.$store.state.userInfo.isSign
+    const lastSign = this.$store.state.userInfo && this.$store.state.userInfo.lastSign
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss')
     const lastDate = moment(lastSign).format('YYYY-MM-DD HH:mm:ss')
-    const diff = moment(nowDate).diff(moment(lastDate), 'day')
+    const diff = moment(nowDate).diff(moment(lastDate), 'day') // 判断是否相差一天
     if (diff > 0 && isSign) {
       this.isSign = false
     } else {
@@ -122,7 +122,7 @@ export default {
       return result
     },
     count () {
-      if (this.$store.state.userInfo !== {}) {
+      if (this.$store.state.userInfo !== {} && this.$store.state.userInfo !== null) {
         if (typeof this.$store.state.userInfo.count !== 'undefined') {
           return this.$store.state.userInfo.count
         } else {
