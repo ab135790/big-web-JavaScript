@@ -139,7 +139,7 @@ export default {
     },
     changeFav (item, index) {
       this.optIndex = index
-      console.log('optIndex', this.optIndex)
+      // console.log('optIndex', this.optIndex)
       this.limit = this.options[this.optIndex]
       this.initPages()
       // 当页面上的limit发生变化之后，调整current数值
@@ -169,7 +169,7 @@ export default {
       this.$emit('chageCurrent', val)
     },
     getPage () {
-      console.log(this.pageVal)
+      // console.log(this.pageVal)
       if (this.pageVal <= this.pages.length && this.pageVal >= 1) {
         this.$emit('chageCurrent', parseInt(this.pageVal) - 1)
       } else {

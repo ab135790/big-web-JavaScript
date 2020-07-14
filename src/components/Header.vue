@@ -178,7 +178,6 @@ export default {
      * @return:
      */
     show () {
-      console.log('show')
       clearTimeout(this.hoverCtrl)
       this.hoverCtrl = setTimeout(() => {
         this.isHover = true
@@ -190,7 +189,6 @@ export default {
      * @return:
      */
     hide () {
-      console.log('hide')
       clearTimeout(this.hoverCtrl)
       this.hoverCtrl = setTimeout(() => {
         this.isHover = false

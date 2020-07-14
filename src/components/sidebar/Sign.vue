@@ -87,7 +87,7 @@ export default {
   },
   watch: {
     userInfo (newval, oldval) {
-      console.log('newval', newval, 'oldval', oldval)
+      // console.log('newval', newval, 'oldval', oldval)
       if (newval.isSign === true) {
         this.countDowm()
         this.isSing = true

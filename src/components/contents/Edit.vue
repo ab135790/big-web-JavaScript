@@ -218,7 +218,6 @@ export default {
   },
   mounted () {
     if (this.page) {
-      console.log(this.page)
       this.content = this.page.content
       this.title = this.page.title
       this.favIndex = this.favList.indexOf(parseInt(this.page.fav))

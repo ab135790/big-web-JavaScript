@@ -106,9 +106,7 @@ export default {
       this.insert(insertContent)
       this.pos += insertContent.length
     },
-    addEvent (item) {
-      console.log('item', item)
-    },
+    addEvent (item) {},
     // 添加链接
     addLink (item) {
       const insertContent = ` a(${item})[${item}]`

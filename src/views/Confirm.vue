@@ -34,7 +34,7 @@ export default {
   mounted () {
     let queryStr = window.location.href.replace(/.*\?/, '')
     let obj = Object.fromEntries(queryStr.split('&').map(v => v.split('=')))
-    console.log('obj', obj)
+    // console.log('obj', obj)
     this.username = decodeURIComponent(obj.username)
     this.query = obj
   },

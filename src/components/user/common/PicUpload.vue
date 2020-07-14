@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     upload (e) {
-      console.log('e', e)
+      // console.log('e', e)
       let file = e.target.files
       let formData = new FormData()
       if (file.length > 0) {
@@ -51,7 +51,7 @@ export default {
       // 上传图片之后 -> uploadImg
       // 更新用户基本资料 -> updateUserInfo
       uploadImg(this.formData).then(res => {
-        console.log('res', res)
+        // console.log('res', res)
         if (res.code === 200) {
           const baseUrl = process.env.NODE_ENV === 'production' ? config.baseUrl.pro : config.baseUrl.dev
           this.pic = baseUrl + res.data

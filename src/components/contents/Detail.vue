@@ -374,7 +374,6 @@ export default {
       }, () => {})
     },
     hands (item) {
-      console.log()
       setHands({ cid: item._id }).then(res => {
         if (res.code === 200) {
           item.handed = '1'

@@ -38,7 +38,6 @@ export default {
   watch: {
     // 去监听current标签是否有变化，如果有变化就进行初始化数据
     current (newVal, oldVal) {
-      console.log('oldVal', oldVal, 'newVal', newVal)
       this.init()
     },
     '$route' (newVal, oldVal) {
@@ -61,7 +60,6 @@ export default {
     },
     search (val) {
       if (typeof val === 'undefined' && this.current === '') return
-      console.log(typeof val)
       this.current = val
       switch (val) {
         // 未结贴

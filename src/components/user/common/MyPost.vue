@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     getPostList () {
-      console.log('current', this.current)
+      // console.log('current', this.current)
       getPostListByUid({
         page: this.current,
         limit: this.limit
