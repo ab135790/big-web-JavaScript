@@ -11,7 +11,7 @@ import store from '@/store'
 class WebSocketClient {
   constructor (config = {}) {
     const defaultConfig = {
-      url: '127.0.0.1',
+      url: '106.55.147.49',
       port: '3001',
       protocol: 'ws',
       timeInterval: 5 * 1000
